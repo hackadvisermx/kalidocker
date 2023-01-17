@@ -1,0 +1,23 @@
+FROM kalilinux/kali-bleeding-edge as baseline
+
+    RUN \
+        apt update -y && \
+        DEBIAN_FRONTEND="noninteractive" apt-get -y install  \
+        curl \
+        fping \
+        host \
+        iputils-ping \
+        openvpn \
+        tmux \
+        unzip \
+        wget \
+        zsh 
+
+
+FROM builder as final 
+    COPY shell/ /tmp
+    WORKDIR /tmp
+    RUN \
+        cp .tmux.conf /root
+
+    WORKDIR /root
