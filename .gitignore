@@ -1,1 +1,4 @@
 vpn/
+creds/
+docp/.terraform
+docp/terraform*
